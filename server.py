@@ -7,8 +7,11 @@ app = Flask(__name__)
 class BackendTest(unittest.TestCase):
     @app.route('/')
     def hello_flask():
-        print("function: " + __name__)
         return "Hello, Flask!"
+
+    @app.route('/bye')
+    def bye_flask():
+        return "bye, Flask!"
 
     def test_run(self):
         app.run()
