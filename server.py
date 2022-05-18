@@ -1,30 +1,17 @@
-import unittest
 from flask import Flask
 
 app = Flask(__name__)
 
 
-class BackendTest(unittest.TestCase):
-    @app.route('/')
-    def hello_flask():
-        return "Hello, Flask!"
+@app.route('/')
+def hello_flask():
+    return "Hello, Flask!"
 
-    @app.route('/bye')
-    def bye_flask():
-        return "bye, Flask!"
 
-    def test_run(self):
-        app.run()
+@app.route('/<name>/<age>')
+def bye_flask(name, age):
+    return f"hello, there {name}, you are {age} years old"
 
 
 if __name__ == '__main__':
-    unittest.main()
-
-
-# @app.route('/')
-# def hello_flask():
-#     print("function: " + __name__)
-#     return "Hello, Flask!"
-
-# if __name__ == '__main__':
-#     app.run()
+    app.run(debug=True)
